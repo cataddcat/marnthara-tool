@@ -1,0 +1,462 @@
+/* --- PRINT & PDF STYLES --- */
+#printable-content {
+    display: none;
+}
+
+#printable-content * {
+    box-sizing: border-box;
+}
+
+#quotation-template,
+#receipt-template {
+    font-family: "Noto Sans Thai", sans-serif;
+    color: #333;
+    font-size: 10pt;
+    background-color: #fff;
+}
+
+.pdf-page {
+    width: 210mm;
+    min-height: 297mm;
+    page-break-after: always;
+    display: block;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.pdf-page:last-child {
+    page-break-after: avoid;
+}
+
+.pdf-page-content {
+    padding: 12mm 12mm 20mm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-page-body {
+    flex-grow: 1;
+}
+
+.pdf-summary-wrapper {
+    margin-top: auto;
+    page-break-inside: avoid;
+    position: relative;
+}
+
+.pdf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8mm;
+    border-bottom: 3px solid #002d62;
+    padding-bottom: 5mm;
+}
+
+.pdf-shop-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 4mm;
+}
+
+.pdf-logo {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: contain;
+}
+
+.pdf-shop-address {
+    font-size: 9pt;
+    line-height: 1.4;
+}
+
+.pdf-shop-address strong {
+    color: #002d62;
+}
+
+.pdf-quote-details {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.pdf-title-box {
+    background-color: #002d62;
+    color: #fff;
+    padding: 2mm 5mm;
+    margin-bottom: 2mm;
+    display: inline-block;
+}
+
+.pdf-title-box h1 {
+    font-size: 14pt;
+    color: inherit;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pdf-quote-meta {
+    font-size: 10pt;
+    border-collapse: collapse;
+    margin-left: auto;
+}
+
+.pdf-quote-meta td {
+    padding: 1mm 0 1mm 2mm;
+}
+
+.pdf-quote-meta td:first-child {
+    font-weight: bold;
+    color: #002d62;
+}
+
+.pdf-customer-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 4mm;
+    border: 1px solid #bcc2cb;
+    margin-bottom: 8mm;
+    font-size: 10pt;
+    line-height: 1.6;
+    page-break-inside: avoid;
+    background-color: #f8f9fc;
+}
+
+.pdf-customer-info {
+    flex-basis: 60%;
+}
+
+.pdf-customer-meta {
+    flex-basis: 35%;
+    text-align: right;
+}
+
+.pdf-customer-details strong {
+    font-weight: 700;
+    color: #333;
+}
+
+.pdf-items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pdf-items-table th,
+.pdf-items-table td {
+    border: 1px solid #ddd;
+    padding: 2.5mm 2mm;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.pdf-items-table thead {
+    display: table-header-group;
+}
+
+.pdf-items-table thead th {
+    background-color: #002d62;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pdf-items-table tbody tr {
+    page-break-inside: avoid;
+}
+
+.pdf-items-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.pdf-items-table td small {
+    color: #555;
+    font-size: 8.5pt;
+}
+
+.pdf-room-header td {
+    background-color: #eeefea;
+    font-weight: bold;
+    color: #002d62;
+}
+
+.pdf-text-center {
+    text-align: center;
+}
+
+.pdf-text-right {
+    text-align: right;
+}
+
+.pdf-summary-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 5mm;
+    border-top: 2px solid #002d62;
+}
+
+.pdf-amount-in-words {
+    flex-basis: 55%;
+    font-size: 9pt;
+}
+
+.pdf-amount-in-words ul {
+    padding-left: 5mm;
+    margin: 2mm 0;
+}
+
+.pdf-amount-in-words li {
+    margin-bottom: 1mm;
+}
+
+.pdf-amount-text {
+    background-color: #eeefea;
+    padding: 2mm;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 3mm;
+    color: #002d62;
+}
+
+.pdf-totals-block {
+    flex-basis: 40%;
+}
+
+.pdf-totals-block table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+}
+
+.pdf-totals-block .pdf-label {
+    text-align: right;
+    padding: 2.5mm;
+    font-weight: 700;
+}
+
+.pdf-totals-block .pdf-amount {
+    text-align: right;
+    padding: 2.5mm;
+    border-bottom: 1px solid #ccc;
+}
+
+.pdf-grand-total .pdf-label {
+    font-size: 11pt;
+}
+
+.pdf-grand-total .pdf-amount {
+    background-color: #002d62;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12pt;
+    border-bottom: none;
+}
+
+.pdf-footer-section {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 9pt;
+    margin-top: 10mm;
+    border-top: 1px solid #ccc;
+    padding-top: 5mm;
+}
+
+.pdf-signature-box {
+    flex-basis: 48%;
+}
+
+.pdf-signature-box p {
+    margin: 1mm 0;
+}
+
+.pdf-signature-box p:first-child {
+    margin-top: 15mm;
+}
+
+.pdf-signature-img {
+    display: block;
+    margin: 0 auto 1mm;
+    max-height: 18mm;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.pdf-signature-box:has(.pdf-signature-img) p:first-of-type {
+    margin-top: 0;
+}
+
+
+.pdf-paid-stamp {
+    position: absolute;
+    top: 5mm;
+    right: 10mm;
+    transform: rotate(-12deg);
+    border: 3px solid #c0392b;
+    color: #c0392b;
+    font-weight: 700;
+    font-size: 18pt;
+    padding: 2mm 6mm;
+    border-radius: 2mm;
+    opacity: 0.85;
+    pointer-events: none;
+    letter-spacing: 1px;
+}
+
+.pdf-page-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 12mm;
+    right: 12mm;
+    font-size: 8pt;
+    color: #666;
+    border-top: 1px solid #ccc;
+    padding-top: 5px;
+}
+
+.pdf-footer-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pdf-subtotal-row td {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    font-size: 9.5pt;
+    font-style: italic;
+}
+
+@media print {
+    @page {
+        margin: 0;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+
+    body > *:not(#printable-content) {
+        display: none;
+    }
+
+    #printable-content {
+        display: block;
+    }
+
+    .pdf-page {
+        margin: 0;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .pdf-page-content {
+        padding: 15mm 12mm 10mm;
+        height: auto;
+    }
+
+    .pdf-page-footer {
+        position: static;
+        padding-top: 10mm;
+    }
+
+    .pdf-title-box,
+    .pdf-items-table thead th,
+    .pdf-grand-total .pdf-amount,
+    .pdf-room-header td,
+    .pdf-subtotal-row td,
+    .pdf-amount-text {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+
+/* --- [FIX] Shop Settings Modal --- */
+
+/* 1. ทำให้เนื้อหา Modal สกอลล์ได้เมื่อสูงเกินไป (สมมติ ID #shopSettingsModal) */
+#shopSettingsModal .modal-content {
+    max-height: 80vh; /* สูงสุด 80% ของความสูงจอ */
+    overflow-y: auto; /* มีแถบสกอลล์เมื่อเนื้อหาล้น */
+}
+
+/* 2. สร้าง Layout ที่ยืดหยุ่นสำหรับฟอร์ม (สมมติว่าฟอร์มมี class .form-layout) */
+#shopSettingsModal .form-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* ค่าเริ่มต้น: 1 คอลัมน์สำหรับจอเล็ก */
+    gap: 1rem;
+    margin-top: 1rem; /* เพิ่มระยะห่างจากหัวข้อ */
+}
+
+/* 3. ใช้ Media Query เพื่อปรับ Layout เมื่อจอใหญ่ขึ้น */
+@media (width >= 500px) {
+    #shopSettingsModal .form-layout {
+        /* เปลี่ยนเป็น 2 คอลัมน์เมื่อจอกว้าง 500px ขึ้นไป */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* บังคับให้ input ที่ควรจะเต็มแถว (เช่น ที่อยู่) เต็ม 100% */
+#shopSettingsModal .form-group.full-width-item {
+    grid-column: 1 / -1; /* ใช้ class .full-width-item */
+}
+
+/* +   Utility class ที่คุณต้องเพิ่มเองใน HTML 
+   สำหรับ .form-group ที่ต้องการให้เต็มแถว (เช่น textarea ที่อยู่)
+*/
+.form-group.full-width-item {
+    grid-column: 1 / -1; /* ใช้ class .full-width-item */
+}
+
+/* [REMOVED] Redundant RCC Footer Grid styles (now handled by v2.1 flexbox) */
+
+/* [REMOVED] Old Batch Editor List styles (now handled by v4 styles) */
+
+/* Height Warning Styles */
+.item-summary .height-warning {
+    color: var(--warning);
+    background-color: var(--warning-container);
+    padding: 0.1em 0.4em;
+    border-radius: var(--border-radius-sm);
+    font-weight: 700;
+    margin: 0 auto;
+    border: 1px solid var(--warning);
+}
+
+body.dark-theme .item-summary .height-warning,
+body.neutral-theme .item-summary .height-warning {
+    color: var(--on-warning-container);
+    background-color: var(--warning-container);
+    border-color: var(--on-warning-container);
+}
+
+/* Modal Actions Layout */
+.modal-actions--space-between {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    row-gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.modal-actions--space-between > div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Form Group Layout */
+.form-group--full-width {
+    grid-column: 1 / -1;
+}
+
+/* Radio Card Group Grids */
+.radio-card-group--2-col {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}

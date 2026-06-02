@@ -1,0 +1,890 @@
+/* --- COMPONENTS --- */
+
+/* Room Card */
+.room-card.is-suspended {
+    opacity: 0.6;
+    filter: grayscale(80%);
+}
+
+.room-header-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.room-header-controls .form-group {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.room-options-container {
+    padding-top: 0.1rem;
+    display: flex;
+    gap: 0.25rem;
+}
+
+.room-name-input {
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.65rem 0.75rem;
+    background-color: var(--surface);
+    border: 2px solid var(--outline);
+}
+
+.room-name-input::placeholder {
+    color: var(--on-surface-variant);
+    font-weight: 500;
+}
+
+.room-name-input:focus {
+    background-color: var(--surface);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-container);
+}
+
+.room-actions-footer {
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--outline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.room-actions-footer .btn {
+    font-size: 0.95rem;
+}
+
+.room-ender {
+    height: 1px;
+    background: var(--outline);
+    margin: 0.25rem 0.75rem 0.75rem;
+}
+
+.room-summary-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+}
+
+.room-brief {
+    font-size: 0.875rem;
+    color: var(--on-surface-variant);
+    text-align: right;
+    white-space: nowrap;
+    padding: 0 0.5rem;
+}
+
+.room-options-container .room-options-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background-color: var(--surface);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--outline);
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-speed) ease;
+    z-index: 120;
+    overflow: hidden;
+}
+
+.room-options-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.room-options-menu a:hover {
+    background-color: var(--surface-container);
+}
+
+.room-options-menu a.danger {
+    color: var(--danger);
+}
+
+.room-options-menu a.danger:hover {
+    background-color: var(--danger-container);
+}
+
+.room-options-menu hr {
+    border: none;
+    border-top: 1px solid var(--outline);
+    margin: 0.25rem 0;
+}
+
+/* Item Card General */
+.items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item-card {
+    border: 1px solid var(--outline);
+    background-color: var(--surface);
+    border-radius: var(--border-radius-md);
+    border-left: 5px solid var(--outline-variant);
+    transition: all var(--transition-speed);
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 7%);
+    border-top: 3px solid transparent;
+    scroll-margin-top: 100px;
+}
+
+.item-card.is-suspended {
+    opacity: 0.5;
+    filter: grayscale(80%);
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 5px,
+        rgb(120 120 120 / 10%) 5px,
+        rgb(120 120 120 / 10%) 10px
+    );
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    transition: background-color var(--transition-speed);
+}
+
+.item-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    transition: color var(--transition-speed);
+}
+
+.item-title > span {
+    font-weight: 700;
+}
+
+.item-type-display {
+    /* [MODIFIED] Inherit bold weight from parent button */
+    font-weight: inherit;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.item-actions .btn-icon {
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+    min-width: 36px;
+}
+
+.item-actions .btn-icon .ph {
+    font-size: 1.15rem;
+}
+
+.item-grid {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.item-summary {
+    background-color: var(--surface-container);
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--on-surface-variant);
+    border-top: 1px solid var(--outline);
+    margin: 0.5rem 0 0;
+    transition:
+        background-color var(--transition-speed),
+        border-color var(--transition-speed);
+    text-align: center;
+}
+
+.item-summary.single-line {
+    text-align: center;
+}
+
+.item-summary b {
+    color: var(--on-surface);
+    font-weight: 700;
+}
+
+/* Item Type Specific Styles */
+
+.set-item {
+    border-left-color: var(--curtain-color);
+    border-top-color: var(--curtain-color);
+}
+
+.set-item .item-title,
+.set-item .item-type-display {
+    color: var(--curtain-color);
+}
+
+.set-item .item-header {
+    background-color: var(--curtain-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.wallpaper-item {
+    border-left-color: var(--wallpaper-color);
+    border-top-color: var(--wallpaper-color);
+}
+
+.wallpaper-item .item-title,
+.wallpaper-item .item-type-display {
+    color: var(--wallpaper-color);
+}
+
+.wallpaper-item .item-header {
+    background-color: var(--wallpaper-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.wooden-blind-item {
+    border-left-color: var(--wooden-blind-color);
+    border-top-color: var(--wooden-blind-color);
+}
+
+.wooden-blind-item .item-title,
+.wooden-blind-item .item-type-display {
+    color: var(--wooden-blind-color);
+}
+
+.wooden-blind-item .item-header {
+    background-color: var(--wooden-blind-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.roller-blind-item {
+    border-left-color: var(--roller-blind-color);
+    border-top-color: var(--roller-blind-color);
+}
+
+.roller-blind-item .item-title,
+.roller-blind-item .item-type-display {
+    color: var(--roller-blind-color);
+}
+
+.roller-blind-item .item-header {
+    background-color: var(--roller-blind-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.vertical-blind-item {
+    border-left-color: var(--vertical-blind-color);
+    border-top-color: var(--vertical-blind-color);
+}
+
+.vertical-blind-item .item-title,
+.vertical-blind-item .item-type-display {
+    color: var(--vertical-blind-color);
+}
+
+.vertical-blind-item .item-header {
+    background-color: var(--vertical-blind-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.partition-item {
+    border-left-color: var(--partition-color);
+    border-top-color: var(--partition-color);
+}
+
+.partition-item .item-title,
+.partition-item .item-type-display {
+    color: var(--partition-color);
+}
+
+.partition-item .item-header {
+    background-color: var(--partition-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.pleated-screen-item {
+    border-left-color: var(--pleated-screen-color);
+    border-top-color: var(--pleated-screen-color);
+}
+
+.pleated-screen-item .item-title,
+.pleated-screen-item .item-type-display {
+    color: var(--pleated-screen-color);
+}
+
+.pleated-screen-item .item-header {
+    background-color: var(--pleated-screen-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+.aluminum-blind-item {
+    border-left-color: var(--aluminum-blind-color);
+    border-top-color: var(--aluminum-blind-color);
+}
+
+.aluminum-blind-item .item-title,
+.aluminum-blind-item .item-type-display {
+    color: var(--aluminum-blind-color);
+}
+
+.aluminum-blind-item .item-header {
+    background-color: var(--aluminum-blind-container-color);
+    border-bottom: 1px solid var(--outline);
+}
+
+/* Wallpaper Specific */
+
+.walls-section > p {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--on-surface-variant);
+}
+
+.walls-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.wall-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 2px;
+    margin: -2px;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Progressive Disclosure */
+.item-details-more {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+    padding: 0 0.5rem;
+    background-color: transparent;
+}
+
+/* Override Price Fieldset */
+.form-group-override {
+    border: 2px dashed var(--outline);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    margin: 0.75rem 0.5rem 0.5rem;
+    transition: border-color var(--transition-speed);
+}
+
+.form-group-override legend {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.form-group-override legend label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.form-group-override legend input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--warning);
+}
+
+.item-card.is-override-active .form-group-override {
+    border-style: solid;
+    border-color: var(--warning);
+}
+
+.item-card.is-override-active .calculable-fields {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.item-details-more.show {
+    max-height: 700px;
+    padding: 0.75rem 0.5rem;
+    border-top: 1px solid var(--outline);
+}
+
+.item-details-more fieldset {
+    border: 1px solid var(--outline);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    margin: 0;
+    background-color: var(--surface);
+}
+
+.item-details-more fieldset .item-grid {
+    padding: 0.25rem 0 0;
+}
+
+.item-details-more fieldset legend {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.item-details-more fieldset legend i {
+    font-size: 1em;
+    margin-right: 0.25rem;
+    color: var(--primary);
+}
+
+/* Placeholder Item */
+.placeholder-item {
+    border-left: 5px dashed var(--outline-variant);
+    border-top: 3px solid transparent;
+    background-color: var(--surface-container);
+}
+
+.placeholder-item .item-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--outline);
+    color: var(--on-surface-variant);
+}
+
+.placeholder-item .placeholder-label {
+    font-weight: 500;
+    font-style: italic;
+    color: var(--on-surface-variant);
+    margin-left: 0.25rem;
+}
+
+.placeholder-item .item-header i.ph-placeholder {
+    color: var(--primary);
+}
+
+.placeholder-content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.placeholder-dimensions i {
+    color: var(--primary);
+    margin-right: 0.25rem;
+    font-size: 1.1em;
+    vertical-align: middle;
+}
+
+.placeholder-dimensions {
+    font-size: 1rem;
+    color: var(--on-surface);
+    line-height: 1.7;
+}
+
+.placeholder-item.is-suspended {
+    opacity: 0.5;
+    filter: grayscale(80%);
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 5px,
+        rgb(120 120 120 / 10%) 5px,
+        rgb(120 120 120 / 10%) 10px
+    );
+}
+
+.placeholder-item.is-suspended .btn-select-type {
+    pointer-events: none;
+}
+
+.placeholder-dimensions.single-line-dims {
+    line-height: 1.5;
+}
+
+.placeholder-dimensions.single-line-dims br {
+    display: none;
+}
+
+/* --- FORMS --- */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* --- MENUS --- */
+.menu-container {
+    position: relative;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--surface);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--outline);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-speed) ease;
+    z-index: 110;
+}
+
+.menu-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* [REFACTORED] Merged .menu-dropdown a and #quickNavRoomList a */
+.menu-dropdown a,
+#quickNavDropdown #quickNavRoomList a {
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: var(--on-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.menu-dropdown a:hover,
+#quickNavDropdown #quickNavRoomList a:hover {
+    background-color: var(--surface-container);
+}
+
+/* --- End Merge --- */
+
+/* Specific override for room options menu */
+.room-options-menu a {
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    color: var(--on-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.menu-dropdown a.danger {
+    color: var(--danger);
+}
+
+.menu-dropdown a.danger:hover {
+    background-color: var(--danger-container);
+}
+
+.menu-dropdown hr {
+    border: none;
+    border-top: 1px solid var(--outline);
+    margin: 0.25rem 0;
+}
+
+/* Quick Nav Menu (Footer) */
+.summary-footer .menu-dropdown {
+    inset: auto auto calc(100% + 8px) 0;
+    transform: translateY(10px);
+    background-color: var(--surface);
+    border: 1px solid var(--outline);
+}
+
+.summary-footer .menu-dropdown.show {
+    transform: translateY(0);
+}
+
+.quick-nav-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem 0.75rem;
+}
+
+.quick-nav-actions .btn-chip {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.quick-nav-title {
+    padding: 0.75rem 1.25rem 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#quickNavDropdown #quickNavRoomList {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* [MODIFIED] Main Header Menu Dropdown - Mobile-first 1-column grid */
+.main-header .menu-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition:
+        opacity 0.2s ease-out,
+        transform 0.2s ease-out;
+    z-index: 100;
+
+    /* [NEW] Mobile-first (small screen) defaults */
+    width: auto; /* Allow it to be constrained by max-width */
+    min-width: 240px; /* Good minimum width for 1 column */
+    max-width: 320px; /* Constrain to 1 column on small screens */
+    max-height: calc(100vh - 80px);
+    overflow-y: auto; /* Add scroll for small screens (as requested) */
+    display: grid;
+
+    /* [NEW] Default to 1 column */
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.5rem; /* Padding for the grid container */
+}
+
+/* [NEW] Media query for larger screens to enable auto-fit */
+@media (width >= 580px) {
+    .main-header .menu-dropdown {
+        /* [MODIFIED] Enable auto-fit grid for wider screens */
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        max-width: 560px; /* Max width for 2 columns */
+    }
+}
+
+.main-header .menu-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.main-header .menu-dropdown a {
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--on-surface-variant); /* [MODIFIED] Softer text color */
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--border-radius-md); /* [NEW] Rounded items */
+}
+
+.main-header .menu-dropdown a:hover {
+    background-color: var(
+        --surface-container-high
+    ); /* [MODIFIED] Better hover */
+
+    color: var(--on-surface);
+}
+
+.main-header .menu-dropdown a i {
+    font-size: 1.2em;
+}
+
+.main-header .menu-dropdown hr {
+    border-color: var(--outline-variant);
+    margin: 0.25rem 0;
+
+    /* [NEW] Make separator span full grid width */
+    grid-column: 1 / -1;
+}
+
+#quickNavDropdown #quickNavRoomList a:hover {
+    background-color: var(--surface-container);
+}
+
+/* --- SVG STYLES (Look Book / Visualizations) --- */
+.opening-text {
+    text-anchor: middle;
+    font-size: 10px;
+    font-weight: bold;
+    fill: var(--on-surface);
+    dominant-baseline: central;
+}
+
+.opening-text-bg {
+    fill: var(--surface-container);
+    stroke: var(--outline);
+    opacity: 0.85;
+}
+
+.blind-frame {
+    fill: var(--surface);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.blind-slat {
+    fill: var(--surface-container-high);
+    stroke: var(--outline);
+    stroke-width: 0.25;
+}
+
+.wooden-blind-slat {
+    fill: var(--wooden-blind-container-color);
+    stroke: var(--wooden-blind-color);
+    stroke-width: 0.3;
+}
+
+.wooden-blind-strip {
+    fill: var(--on-surface-variant);
+    opacity: 0.6;
+}
+
+.roller-fabric {
+    fill: var(--roller-blind-container-color);
+    stroke: var(--roller-blind-color);
+    stroke-width: 0.5;
+}
+
+.roller-roll {
+    fill: var(--surface-container-high);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.roller-bar {
+    stroke: var(--on-surface-variant);
+    stroke-width: 1.5;
+}
+
+.partition-panel {
+    fill: var(--partition-container-color);
+    stroke: var(--partition-color);
+    stroke-width: 0.4;
+}
+
+.partition-hinge {
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.pleated-screen-mesh {
+    stroke: var(--pleated-screen-color);
+    stroke-width: 0.5;
+    opacity: 0.6;
+}
+
+.wallpaper-pattern {
+    fill: var(--wallpaper-color);
+    opacity: 0.5;
+}
+
+.adjustment-cord {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+    fill: var(--on-surface-variant);
+    opacity: 0.8;
+}
+
+/* [REFACTORED] Merged Louis styles */
+.louis-swag,
+.louis-tail {
+    fill: var(--curtain-container-color);
+    stroke: var(--curtain-color);
+    stroke-width: 0.8;
+    opacity: 0.9;
+}
+
+.louis-tassel {
+    fill: var(--warning);
+    stroke: var(--on-warning-container);
+    stroke-width: 0.5;
+}
+
+.curtain-panel-opaque {
+    fill: var(--surface-container-high);
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.5;
+}
+
+.curtain-panel-sheer {
+    fill: var(--surface);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+    opacity: 0.7;
+}
+
+.style-grommet {
+    fill: var(--outline-variant);
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+}
+
+.style-ripplefold-path {
+    fill: none;
+    stroke: var(--on-surface-variant);
+    stroke-width: 1.5;
+}
+
+.style-pleat-text {
+    font-size: 4px;
+    fill: var(--on-surface-variant);
+    font-family: monospace, sans-serif;
+}
+
+.style-pleat-line {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.6;
+    opacity: 0.8;
+}
+
+.style-pleat-stitch {
+    fill: var(--on-surface-variant);
+    stroke: none;
+}
+
+.dimension-line,
+.dimension-tick {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+}
+
+.dimension-line {
+    stroke-dasharray: 2 2;
+}
+
+.dimension-text {
+    font-size: 8px;
+    fill: var(--on-surface);
+    text-anchor: middle;
+}
+
+.fallback-text {
+    font-size: 12px;
+    font-weight: 500;
+    fill: var(--on-surface-variant);
+    text-anchor: middle;
+    dominant-baseline: middle;
+}

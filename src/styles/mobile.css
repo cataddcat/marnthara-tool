@@ -1,0 +1,235 @@
+/* --- MOBILE OPTIMIZATIONS ---
+   Applies to phones ≤ 480px. Reduces spacing and font sizes without
+   dropping input font below 16px (prevents iOS auto-zoom). */
+
+/* --- Date input: match other form elements --- */
+input[type="date"],
+input[type="time"] {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--outline);
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 400;
+    transition:
+        border-color var(--transition-speed),
+        box-shadow var(--transition-speed),
+        background-color var(--transition-speed);
+    appearance: none;
+}
+
+input[type="date"]:focus,
+input[type="time"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-container);
+    background-color: var(--surface);
+}
+
+input[type="date"]:disabled,
+input[type="time"]:disabled {
+    background-color: var(--surface-container-high);
+    color: var(--on-surface);
+    border-color: var(--outline);
+    cursor: not-allowed;
+    opacity: 1;
+    -webkit-text-fill-color: var(--on-surface);
+    box-shadow: none;
+}
+
+/* Prevent pull-to-refresh interfering with scroll */
+body {
+    overscroll-behavior-y: contain;
+}
+
+@media (width <= 480px) {
+    /* Layout */
+    #app-container {
+        padding-top: 0.5rem;
+        padding-right: max(0.5rem, env(safe-area-inset-right));
+        padding-bottom: 0.5rem;
+        padding-left: max(0.5rem, env(safe-area-inset-left));
+    }
+
+    body {
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+
+    /* Header */
+    .main-header {
+        padding-top: max(0.5rem, env(safe-area-inset-top));
+        padding-right: max(0.75rem, env(safe-area-inset-right));
+        padding-bottom: 0.5rem;
+        padding-left: max(0.75rem, env(safe-area-inset-left));
+        margin-bottom: 0.75rem;
+    }
+
+    .main-header h1 {
+        font-size: 1.1rem;
+    }
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    .header-title-group {
+        gap: 0.5rem;
+    }
+
+    /* Footer */
+    .footer-totals {
+        padding: 0.35rem 0.6rem;
+    }
+
+    .grand-total {
+        font-size: 1.05rem;
+    }
+
+    /* Cards */
+    .card summary {
+        padding: 0.6rem 0.4rem 0.6rem 0.9rem;
+    }
+
+    .card summary h2 {
+        font-size: 1rem;
+        gap: 0.5rem;
+    }
+
+    .card-content {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    /* Room */
+    .room-name-input {
+        font-size: 1rem;
+        padding: 0.55rem 0.65rem;
+    }
+
+    .room-actions-footer {
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .room-actions-footer .btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    /* Item cards */
+    .item-header {
+        padding: 0.5rem;
+    }
+
+    .item-title {
+        font-size: 0.9rem;
+        gap: 0.35rem;
+    }
+
+    .item-actions .btn-icon {
+        width: 32px;
+        height: 32px;
+        min-height: 32px;
+        min-width: 32px;
+    }
+
+    .item-grid {
+        padding: 0.4rem;
+        gap: 0.4rem;
+    }
+
+    .item-summary {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Forms */
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="password"],
+    input[type="date"],
+    input[type="time"],
+    textarea,
+    select {
+        padding: 0.55rem 0.65rem;
+    }
+
+    .form-group label,
+    legend {
+        font-size: 0.8rem;
+    }
+
+    .form-grid-2 {
+        gap: 0.5rem;
+    }
+
+    .items-container {
+        gap: 0.5rem;
+    }
+
+    /* Radio groups */
+    .radio-group label span {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .radio-card-group .radio-card-content,
+    .radio-card-button .radio-card-content {
+        padding: 0.65rem 0.75rem;
+    }
+
+    .radio-card-group .radio-card-content strong,
+    .radio-card-button .radio-card-content strong {
+        font-size: 0.9rem;
+    }
+
+    .radio-card-group .radio-card-content small,
+    .radio-card-button .radio-card-content small {
+        font-size: 0.8rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.6rem 1.1rem;
+        font-size: 0.875rem;
+    }
+
+    /* Walls (wallpaper) */
+    .walls-container {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 0.3rem;
+    }
+}
+
+/* Extra small phones (≤ 360px) */
+@media (width <= 360px) {
+    #app-container {
+        padding-top: 0.35rem;
+        padding-right: max(0.35rem, env(safe-area-inset-right));
+        padding-bottom: 0.35rem;
+        padding-left: max(0.35rem, env(safe-area-inset-left));
+    }
+
+    .main-header {
+        padding-top: max(0.4rem, env(safe-area-inset-top));
+        padding-right: max(0.5rem, env(safe-area-inset-right));
+        padding-bottom: 0.4rem;
+        padding-left: max(0.5rem, env(safe-area-inset-left));
+    }
+
+    .main-header h1 {
+        font-size: 1rem;
+    }
+
+    .card summary {
+        padding: 0.5rem 0.35rem 0.5rem 0.75rem;
+    }
+
+    .item-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,547 @@
+@media (width >= 300px) {
+    .form-grid-2 {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    /* Fix: Remove unwanted fieldset borders in Export Options Modal */
+    #exportOptionsModal fieldset.form-group {
+        border: none;
+        padding: 0;
+        margin: 0 0 1rem; /* Add margin-bottom for spacing */
+    }
+
+    #exportOptionsModal fieldset.form-group legend {
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group.full-width-item {
+    grid-column: 1 / -1;
+}
+
+.room-header-controls .form-group {
+    flex-grow: 1;
+    margin: 0;
+}
+
+.form-group label,
+legend {
+    font-size: 0.875rem;
+    color: var(--on-surface-variant);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-left: 0;
+}
+
+/* [REMOVED] Redundant margin-top: 0 rules */
+
+legend {
+    padding-inline: 2px;
+}
+
+.item-details-more fieldset legend {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--on-surface-variant);
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+}
+
+/* [REFACTORED] Consolidated form element styles */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--outline);
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 400;
+    transition:
+        border-color var(--transition-speed),
+        box-shadow var(--transition-speed),
+        background-color var(--transition-speed);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* [REFACTORED] Consolidated :focus styles */
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-container);
+    background-color: var(--surface);
+}
+
+/* [REFACTORED] Consolidated :disabled styles */
+input[type="text"]:disabled,
+input[type="tel"]:disabled,
+input[type="number"]:disabled,
+input[type="password"]:disabled,
+textarea:disabled,
+select:disabled {
+    background-color: var(--surface-container-high);
+    color: var(--on-surface);
+    border-color: var(--outline);
+    cursor: not-allowed;
+    opacity: 1;
+    font-weight: 700;
+    -webkit-text-fill-color: var(--on-surface);
+    box-shadow: none;
+}
+
+/* Specific override for disabled select */
+select:disabled {
+    appearance: none;
+    padding-right: 0.75rem;
+}
+
+input[inputmode="numeric"] {
+    text-align: left;
+}
+
+input[inputmode="decimal"] {
+    text-align: right;
+}
+
+/* Radio Chip Groups */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    flex-grow: 1;
+}
+
+.radio-group label span {
+    display: block;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--outline);
+    border-radius: var(--border-radius-md);
+    background-color: var(--surface);
+    color: var(--on-surface-variant);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-weight: 500;
+}
+
+.radio-group label:hover span {
+    border-color: var(--outline-variant);
+    background-color: var(--surface-container);
+}
+
+.radio-group input[type="radio"]:checked + span {
+    background-color: var(--primary-container);
+    border-color: var(--primary);
+    color: var(--on-primary-container);
+    font-weight: 700;
+}
+
+/* Radio Card Groups */
+.radio-card-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.radio-card-group input[type="radio"] {
+    display: none;
+}
+
+.radio-card-group label {
+    display: block;
+}
+
+/* [REFACTORED] Merged .radio-card-button .radio-card-content */
+.radio-card-group .radio-card-content,
+.radio-card-button .radio-card-content {
+    display: block;
+    border: 2px solid var(--outline);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    cursor: pointer;
+    transition:
+        background-color var(--transition-speed),
+        border-color var(--transition-speed),
+        box-shadow var(--transition-speed);
+    box-shadow: 0 0 0 2px transparent;
+}
+
+/* [REFACTORED] Merged .radio-card-button:hover */
+.radio-card-group label:hover .radio-card-content,
+.radio-card-button:hover .radio-card-content {
+    background-color: var(--surface-container);
+    border-color: var(--outline-variant);
+}
+
+.radio-card-group input[type="radio"]:checked + .radio-card-content {
+    border-color: var(--primary);
+    background-color: var(--primary-container);
+    box-shadow: 0 0 0 2px var(--primary-container);
+}
+
+/* [REFACTORED] Merged .radio-card-button .radio-card-content strong/i/small */
+.radio-card-group .radio-card-content strong,
+.radio-card-button .radio-card-content strong {
+    color: var(--on-surface);
+    font-size: 1rem;
+}
+
+.radio-card-group .radio-card-content i,
+.radio-card-button .radio-card-content i {
+    margin-right: 0.5rem;
+    color: var(--primary);
+    font-size: 1.1em;
+    vertical-align: text-bottom;
+}
+
+.radio-card-group .radio-card-content small,
+.radio-card-button .radio-card-content small {
+    display: block;
+    color: var(--on-surface-variant);
+    font-size: 0.875rem;
+}
+
+/* Focus style for button-based radio card */
+.radio-card-button:focus-visible .radio-card-content {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-container);
+}
+
+/* Radio Card Item Colors */
+.radio-card-group label[data-item-type]:hover .radio-card-content {
+    background-color: var(--surface-container-high);
+}
+
+.radio-card-group label[data-item-type] input[type="radio"]:checked + .radio-card-content {
+    box-shadow: 0 0 0 2px var(--surface-container-high);
+}
+
+.radio-card-group input[type="radio"]:checked + .radio-card-content strong,
+.radio-card-group input[type="radio"]:checked + .radio-card-content i {
+    font-weight: 700;
+}
+
+.radio-card-group label[data-item-type="set"]:hover .radio-card-content,
+.radio-card-group label[data-item-type="fabric"]:hover .radio-card-content,
+.radio-card-group label[data-item-type="sheer"]:hover .radio-card-content {
+    border-color: var(--curtain-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="set"]:checked
+    + .radio-card-content,
+.radio-card-group
+    input[type="radio"][value="fabric"]:checked
+    + .radio-card-content,
+.radio-card-group
+    input[type="radio"][value="sheer"]:checked
+    + .radio-card-content {
+    border-color: var(--curtain-color);
+    background-color: var(--curtain-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="set"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="set"]:checked
+    + .radio-card-content
+    i,
+.radio-card-group
+    input[type="radio"][value="fabric"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="fabric"]:checked
+    + .radio-card-content
+    i,
+.radio-card-group
+    input[type="radio"][value="sheer"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="sheer"]:checked
+    + .radio-card-content
+    i {
+    color: var(--curtain-color);
+}
+
+.radio-card-group label[data-item-type="wallpaper"]:hover .radio-card-content {
+    border-color: var(--wallpaper-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="wallpaper"]:checked
+    + .radio-card-content {
+    border-color: var(--wallpaper-color);
+    background-color: var(--wallpaper-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="wallpaper"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="wallpaper"]:checked
+    + .radio-card-content
+    i {
+    color: var(--wallpaper-color);
+}
+
+.radio-card-group
+    label[data-item-type="wooden_blind"]:hover
+    .radio-card-content {
+    border-color: var(--wooden-blind-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="wooden_blind"]:checked
+    + .radio-card-content {
+    border-color: var(--wooden-blind-color);
+    background-color: var(--wooden-blind-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="wooden_blind"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="wooden_blind"]:checked
+    + .radio-card-content
+    i {
+    color: var(--wooden-blind-color);
+}
+
+.radio-card-group
+    label[data-item-type="roller_blind"]:hover
+    .radio-card-content {
+    border-color: var(--roller-blind-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="roller_blind"]:checked
+    + .radio-card-content {
+    border-color: var(--roller-blind-color);
+    background-color: var(--roller-blind-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="roller_blind"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="roller_blind"]:checked
+    + .radio-card-content
+    i {
+    color: var(--roller-blind-color);
+}
+
+.radio-card-group
+    label[data-item-type="vertical_blind"]:hover
+    .radio-card-content {
+    border-color: var(--vertical-blind-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="vertical_blind"]:checked
+    + .radio-card-content {
+    border-color: var(--vertical-blind-color);
+    background-color: var(--vertical-blind-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="vertical_blind"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="vertical_blind"]:checked
+    + .radio-card-content
+    i {
+    color: var(--vertical-blind-color);
+}
+
+.radio-card-group label[data-item-type="partition"]:hover .radio-card-content {
+    border-color: var(--partition-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="partition"]:checked
+    + .radio-card-content {
+    border-color: var(--partition-color);
+    background-color: var(--partition-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="partition"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="partition"]:checked
+    + .radio-card-content
+    i {
+    color: var(--partition-color);
+}
+
+.radio-card-group
+    label[data-item-type="pleated_screen"]:hover
+    .radio-card-content {
+    border-color: var(--pleated-screen-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="pleated_screen"]:checked
+    + .radio-card-content {
+    border-color: var(--pleated-screen-color);
+    background-color: var(--pleated-screen-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="pleated_screen"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="pleated_screen"]:checked
+    + .radio-card-content
+    i {
+    color: var(--pleated-screen-color);
+}
+
+.radio-card-group
+    label[data-item-type="aluminum_blind"]:hover
+    .radio-card-content {
+    border-color: var(--aluminum-blind-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="aluminum_blind"]:checked
+    + .radio-card-content {
+    border-color: var(--aluminum-blind-color);
+    background-color: var(--aluminum-blind-container-color);
+}
+
+.radio-card-group
+    input[type="radio"][value="aluminum_blind"]:checked
+    + .radio-card-content
+    strong,
+.radio-card-group
+    input[type="radio"][value="aluminum_blind"]:checked
+    + .radio-card-content
+    i {
+    color: var(--aluminum-blind-color);
+}
+
+/* [REFACTORED] Specific styles for danger radio card button */
+.radio-card-button.danger .radio-card-content strong,
+.radio-card-button.danger .radio-card-content i {
+    color: var(--danger);
+}
+
+.radio-card-button.danger:hover .radio-card-content {
+    border-color: var(--danger);
+    background-color: var(--danger-container);
+}
+
+.radio-card-button.danger:focus-visible .radio-card-content {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px var(--danger-container);
+}
+
+/* Range Slider */
+.range-slider-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.range-slider-group input[type="range"] {
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: var(--surface-container-high);
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    transition: opacity 0.2s;
+}
+
+.range-slider-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--primary);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--primary-container);
+    box-shadow: var(--shadow-sm);
+}
+
+.range-slider-group input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid var(--primary-container);
+    box-shadow: var(--shadow-sm);
+}
+
+.range-slider-value {
+    font-weight: 700;
+    color: var(--on-primary-container);
+    background-color: var(--primary-container);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-sm);
+    min-width: 32px;
+    text-align: center;
+}
+
+/* Favorites Input Group */
+.form-group-with-favorites {
+    position: relative;
+    grid-column: var(--grid-column, auto);
+}
+
+.form-group-with-favorites .form-group {
+    position: relative;
+    margin: 0;
+}
+
+.form-group-with-favorites.full-width-item {
+    --grid-column: 1 / -1;
+}

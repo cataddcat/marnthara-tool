@@ -1,0 +1,42 @@
+{
+    "name": "marnthara-tool-vite",
+    "private": true,
+    "version": "6.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "format": "prettier --write .",
+        "lint:js": "eslint . --ext .js --max-warnings 0",
+        "lint:css": "stylelint \"src/styles/**/*.css\"",
+        "lint": "npm run lint:js && npm run lint:css",
+        "lint:fix": "npm run format && eslint . --ext .js --fix",
+        "test:unit": "vitest run",
+        "test:e2e": "playwright test",
+        "test": "npm run lint && npm run test:unit"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.28.5",
+        "@eslint/css": "^0.14.1",
+        "@eslint/json": "^0.14.0",
+        "@eslint/markdown": "^7.5.1",
+        "@playwright/test": "^1.56.1",
+        "@vite-pwa/assets-generator": "^1.0.2",
+        "eslint": "^9.39.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-jsdoc": "^61.4.1",
+        "eslint-plugin-prettier": "^5.5.4",
+        "jsdom": "^27.2.0",
+        "prettier": "^3.6.2",
+        "stylelint": "^16.26.0",
+        "stylelint-config-standard": "^39.0.1",
+        "vite": "^7.2.4",
+        "vite-plugin-pwa": "^1.2.0",
+        "vitest": "^4.0.13"
+    },
+    "dependencies": {
+        "html2canvas": "^1.4.1",
+        "signature_pad": "^5.1.3"
+    }
+}

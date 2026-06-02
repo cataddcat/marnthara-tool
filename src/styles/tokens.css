@@ -1,0 +1,205 @@
+/* [REFACTORED v2.2 - Consolidation Pass] main.css */
+
+/* --- IMPORTS --- */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;500;700&display=swap");
+
+/* --- THEMES & VARIABLES --- */
+
+/* --- [REMASTERED] Modernized Light Theme (M3 Purple) --- */
+:root {
+    --font-family: "Noto Sans Thai", sans-serif;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 28px;
+    --transition-speed: 0.3s;
+
+    /* Main Palette */
+    --primary: #6750a4;
+    --on-primary: #fff;
+    --primary-container: #e3e0ed;
+    --on-primary-container: #21005e;
+    --secondary: #5a5d72;
+    --on-secondary: #fff;
+    --secondary-container: #e0e2f8;
+    --on-secondary-container: #171a2c;
+
+    /* Status Colors (Refined) */
+    --danger: #ba1a1a;
+    --on-danger: #fff;
+    --danger-container: #ffdad6;
+    --on-danger-container: #410002;
+    --warning: #8c5300;
+    --on-warning: #fff;
+    --warning-container: #ffddba;
+    --on-warning-container: #2d1700;
+    --success: #006e1c;
+    --on-success: #fff;
+    --success-container: #93f992;
+    --on-success-container: #002204;
+    --info: #00658e;
+    --on-info: #fff;
+    --info-container: #c8e6ff;
+    --on-info-container: #001e2e;
+
+    /* Surface & Background */
+    --background: #f2f0ef;
+    --surface: #f8f9fc;
+    --surface-container: #f3f4f7;
+    --surface-container-high: #eaeff9;
+    --surface-container-low: #f6f6ff;
+    --surface-container-medium: #f0f0fa;
+    --on-surface: #191a1d;
+    --on-surface-variant: #43444d;
+    --surface-variant: #e0e2eb;
+
+    /* Outlines & Shadows */
+    --outline: #dde2e7;
+    --outline-variant: #c5c6d0;
+    --divider: 1px solid var(--outline-variant);
+    --shadow-color: rgb(103 80 164 / 10%);
+    --glow-color: rgb(103 80 164 / 15%);
+    --shadow-sm: 0 2px 4px var(--shadow-color);
+    --shadow-md: 0 4px 15px var(--shadow-color), 0 2px 20px var(--glow-color);
+    --shadow-lg: 0 10px 25px var(--shadow-color), 0 5px 30px var(--glow-color);
+    --glass-bg: rgb(242 240 239 / 90%);
+    --glass-border: rgb(255 255 255 / 60%);
+
+    /* Item Type Colors */
+    --curtain-color: #e57399;
+    --curtain-container-color: hsl(340deg 70% 97%);
+    --wallpaper-color: #4caf50;
+    --wallpaper-container-color: hsl(122deg 39% 97%);
+    --wooden-blind-color: #8d6e63;
+    --wooden-blind-container-color: hsl(19deg 15% 97%);
+    --roller-blind-color: #9c27b0;
+    --roller-blind-container-color: hsl(291deg 64% 97%);
+    --vertical-blind-color: #ff5722;
+    --vertical-blind-container-color: hsl(14deg 100% 97%);
+    --partition-color: #03a9f4;
+    --partition-container-color: hsl(200deg 90% 97%);
+    --pleated-screen-color: #009688;
+    --pleated-screen-container-color: hsl(174deg 100% 97%);
+    --aluminum-blind-color: #bdbdbd;
+    --aluminum-blind-container-color: hsl(0deg 0% 97%);
+}
+
+/* --- [REMASTERED & COLORFUL] "Emerald Slate" Dark Theme (M3/Tailwind Inspired) --- */
+body.dark-theme {
+    --primary: #34d399; /* Emerald 400 */
+    --on-primary: #022c22; /* Dark Emerald */
+    --primary-container: #064e3b; /* Emerald 800 */
+    --on-primary-container: #a7f3d0; /* Emerald 200 */
+    --secondary: #7dd3fc; /* Sky 300 */
+    --on-secondary: #0c3349; /* Dark Sky */
+    --secondary-container: #0c4a6e; /* Sky 800 */
+    --on-secondary-container: #bae6fd; /* Sky 200 */
+    --danger: #f43f5e; /* Rose 500 */
+    --on-danger: #fff;
+    --danger-container: #881337; /* Rose 900 */
+    --on-danger-container: #fecdd3; /* Rose 200 */
+    --warning: #facc15; /* Yellow 400 */
+    --on-warning: #422006;
+    --warning-container: #064e3b; /* Yellow 800 */
+    --on-warning-container: #fef08a; /* Yellow 200 */
+    --success: #4ade80; /* Green 400 */
+    --on-success: #052e16;
+    --success-container: #166534; /* Green 700 */
+    --on-success-container: #bbf7d0; /* Green 200 */
+    --info: #38bdf8; /* Light Blue 400 */
+    --on-info: #072c44;
+    --info-container: #0c4a6e; /* Light Blue 800 */
+    --on-info-container: #bdecfd; /* Light Blue 200 */
+    --background: #0f172a; /* Slate 950 (Deep Blue) */
+    --surface: #1e293b; /* Slate 900 */
+    --surface-container: #334155; /* Slate 800 */
+    --surface-container-high: #475569; /* Slate 700 */
+    --surface-container-low: #182131; /* Darker Slate 900 */
+    --surface-container-medium: #293548; /* Mid Slate */
+    --on-surface: #f1f5f9; /* Slate 100 */
+    --on-surface-variant: #94a3b8; /* Slate 400 */
+    --surface-variant: #475569; /* Slate 700 */
+    --outline: #475569; /* Slate 700 */
+    --outline-variant: #64748b; /* Slate 500 */
+    --shadow-color: rgb(0 0 0 / 30%);
+    --glow-color: rgb(52 211 153 / 10%); /* Emerald Glow */
+    --glass-bg: rgb(30 41 59 / 85%); /* Slate 900 Glass */
+    --glass-border: rgb(71 85 105 / 50%); /* Slate 700 Glass Border */
+
+    /* Item Type Colors (Kept vibrant, they work well) */
+    --curtain-color: #f4a9bc;
+    --curtain-container-color: #5c3742;
+    --wallpaper-color: #8bc34a;
+    --wallpaper-container-color: #385939;
+    --wooden-blind-color: #bcaaa4;
+    --wooden-blind-container-color: #4e403a;
+    --roller-blind-color: #ba68c8;
+    --roller-blind-container-color: #4f2658;
+    --vertical-blind-color: #ff8a65;
+    --vertical-blind-container-color: #662e1c;
+    --partition-color: #4fc3f7;
+    --partition-container-color: #1a5069;
+    --pleated-screen-color: #4db6ac;
+    --pleated-screen-container-color: #194c47;
+    --aluminum-blind-color: #eee;
+    --aluminum-blind-container-color: #595959;
+}
+
+/* --- [REMASTERED] Modern Monochrome Slate Theme --- */
+body.neutral-theme {
+    --primary: #f0f2f5;
+    --on-primary: #1a1d20;
+    --primary-container: #414850;
+    --on-primary-container: #f0f2f5;
+    --secondary: #adb5bd;
+    --on-secondary: #212529;
+    --secondary-container: #dee2e6;
+    --on-secondary-container: #1a1d20;
+    --danger: #ffb4ab;
+    --on-danger: #690005;
+    --danger-container: #93000a;
+    --on-danger-container: #ffdad6;
+    --warning: #ffb868;
+    --on-warning: #4b2a00;
+    --warning-container: #6a3e00;
+    --on-warning-container: #ffddba;
+    --success: #77dc79;
+    --on-success: #003909;
+    --success-container: #005312;
+    --on-success-container: #93f992;
+    --info: #8bceff;
+    --on-info: #003855;
+    --info-container: #004c6c;
+    --on-info-container: #c8e6ff;
+    --background: #212529;
+    --surface: #343a40;
+    --surface-container: #1a1d20;
+    --surface-container-high: #414850;
+    --surface-container-low: #2c3034;
+    --surface-container-medium: #32373b;
+    --on-surface: #f5f7fa;
+    --on-surface-variant: #bfc5cb;
+    --surface-variant: #495057;
+    --outline: #5a6169;
+    --outline-variant: #868e96;
+    --shadow-color: rgb(0 0 0 / 40%);
+    --glow-color: rgb(240 242 245 / 5%);
+    --glass-bg: rgb(52 58 64 / 85%);
+    --glass-border: rgb(90 97 105 / 50%);
+    --curtain-color: #e5a9b4;
+    --curtain-container-color: #5c3742;
+    --wallpaper-color: #a5d6a7;
+    --wallpaper-container-color: #385939;
+    --wooden-blind-color: #cfc3bc;
+    --wooden-blind-container-color: #4e403a;
+    --roller-blind-color: #ce93d8;
+    --roller-blind-container-color: #4f2658;
+    --vertical-blind-color: #ffab91;
+    --vertical-blind-container-color: #662e1c;
+    --partition-color: #81d4fa;
+    --partition-container-color: #1a5069;
+    --pleated-screen-color: #80cbc4;
+    --pleated-screen-container-color: #194c47;
+    --aluminum-blind-color: #e0e0e0;
+    --aluminum-blind-container-color: #595959;
+}

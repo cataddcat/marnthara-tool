@@ -1,0 +1,1220 @@
+﻿/* src/styles/modals.css */
+
+/* --- Native Dialog System --- */
+dialog.modal {
+    border: none;
+    border-radius: var(--border-radius-lg);
+    background-color: var(--surface-container-high);
+    color: var(--on-surface);
+    box-shadow: var(--shadow-lg);
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+
+    /* Animation initial state */
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+    transition:
+        opacity var(--transition-speed) ease,
+        transform var(--transition-speed) ease;
+}
+
+/* ขนาดเฉพาะของ Modal บางตัว */
+dialog.modal.modal-lg {
+    max-width: 800px;
+}
+
+dialog.modal.modal-sm {
+    max-width: 350px;
+}
+
+dialog.modal.modal-xxl {
+    max-width: 1000px;
+}
+
+/* Animation when open */
+dialog.modal[open] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- Backdrop (Overlay) --- */
+dialog.modal::backdrop {
+    background-color: rgb(0 0 0 / 50%);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+dialog.modal[open]::backdrop {
+    opacity: 1;
+}
+
+/* --- Modal Layout --- */
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--outline-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface);
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-lg);
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--primary);
+}
+
+.modal-body {
+    padding: 1.5rem;
+    max-height: 65vh;
+    overflow-y: auto;
+    background-color: var(--surface-container-low);
+}
+
+.modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--outline-variant);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    background-color: var(--surface);
+    border-bottom-left-radius: var(--border-radius-lg);
+    border-bottom-right-radius: var(--border-radius-lg);
+}
+
+.modal-footer .footer-action-start {
+    margin-right: auto;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--on-surface-variant);
+    padding: 0.25rem;
+    line-height: 1;
+    border-radius: 4px;
+}
+
+.btn-close-modal:hover {
+    background-color: var(--surface-variant);
+    color: var(--danger);
+}
+
+/* --- Content-Specific Modal Styles (restored from main.css) --- */
+
+/* [REFACTORED] Common Modal Header Bar styles */
+.overview-modal-header-bar,
+.lookbook-modal-header,
+.fav-manager-header,
+#shopSettingsModal .modal-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lookbook-modal-header,
+.fav-manager-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--outline);
+    flex-shrink: 0;
+}
+
+.lookbook-modal-header h3,
+.fav-manager-header h3 {
+    margin: 0;
+}
+
+/* [REFACTORED] Common Modal Close Button styles */
+#overviewModalCancel.btn-icon,
+#lookbookModalCancel.btn-icon,
+#favManagerCancel.btn-icon,
+#shopSettingsModalCancel.btn-icon,
+.close-modal-btn {
+    color: var(--on-surface-variant);
+    width: 38px;
+    height: 38px;
+    background-color: var(--surface-container);
+    border-radius: 50%;
+    transition: all var(--transition-speed);
+}
+
+#overviewModalCancel.btn-icon:hover,
+#lookbookModalCancel.btn-icon:hover,
+#favManagerCancel.btn-icon:hover,
+.close-modal-btn:hover {
+    background-color: var(--surface-container-high);
+    color: var(--danger);
+    transform: scale(1.05);
+}
+
+/* [REFACTORED] Merged Intermediate/Room Control Options Modal */
+#roomControlOptionsModal .modal-content {
+    max-width: 480px;
+}
+
+.modal-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--outline);
+}
+
+.modal-header-flex h3 {
+    margin: 0;
+    color: var(--primary);
+}
+
+#roomControlOptionsBody {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.radio-card-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-family: inherit;
+    width: 100%;
+}
+
+/* Discount Modal */
+.discount-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.discount-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem 1rem;
+    background-color: var(--md-sys-color-surface-container-low, var(--surface-container-low));
+    border-top: 2px solid var(--outline-variant);
+}
+
+.discount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.discount-row.input-row {
+    background-color: var(--surface-container);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-md);
+}
+
+.discount-label {
+    color: var(--on-surface-variant);
+    font-weight: 500;
+}
+
+.discount-value {
+    font-weight: 700;
+    color: var(--on-surface);
+}
+
+.discount-deduction {
+    color: var(--danger);
+}
+
+.discount-final {
+    font-size: 1.25rem;
+    color: var(--primary);
+}
+
+.final-total-row {
+    padding-top: 0.5rem;
+}
+
+#discountVatAmountRow {
+    padding-top: 0.5rem;
+    font-size: 0.9rem;
+    border-top: 1px dashed var(--outline);
+}
+
+#discountVatAmountRow .discount-value {
+    color: var(--success);
+}
+
+#discountVatToggleRow .discount-label,
+#discountVatAmountRow .discount-label,
+#discountVatResultRow .discount-label {
+    color: var(--success);
+    font-weight: 500;
+}
+
+#discountVatResultRow .discount-value {
+    color: var(--success);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-switch-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch-track {
+    position: absolute;
+    inset: 0;
+    background-color: var(--surface-container-high);
+    border-radius: 34px;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--outline);
+}
+
+.toggle-switch-knob {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: var(--on-surface-variant);
+    border-radius: 50%;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+}
+
+.toggle-switch-input:checked + .toggle-switch-track {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.toggle-switch-input:checked + .toggle-switch-track .toggle-switch-knob {
+    background-color: var(--on-primary);
+    transform: translateX(22px);
+}
+
+.toggle-switch.is-success .toggle-switch-input:checked + .toggle-switch-track {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+
+.toggle-switch.is-success
+    .toggle-switch-input:focus-visible
+    + .toggle-switch-track {
+    box-shadow: 0 0 0 3px var(--success-container);
+}
+
+.toggle-switch-input:focus-visible + .toggle-switch-track {
+    box-shadow: 0 0 0 3px var(--primary-container);
+}
+
+.discount-row.toggle-row {
+    padding: 0.5rem 0.25rem;
+    align-items: center;
+}
+
+.discount-inputs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    max-height: 200px;
+    overflow: hidden;
+    transition:
+        max-height 0.3s ease,
+        opacity 0.3s ease,
+        margin-top 0.3s ease;
+}
+
+.discount-inputs-group.is-disabled {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    pointer-events: none;
+}
+
+.discount-input {
+    width: 120px;
+    max-width: 40%;
+    flex-grow: 0;
+    flex-shrink: 1;
+    padding: 0.5rem;
+    text-align: right;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Overview Modal */
+.overview-modal-content {
+    max-width: 600px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+}
+
+.overview-modal-header-bar h3 {
+    margin: 0;
+}
+
+#overviewModalHeader {
+    padding-top: 0;
+}
+
+.overview-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.overview-stat-card {
+    background-color: var(--surface-container);
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid var(--outline);
+}
+
+.overview-stat-card i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.overview-stat-card .stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--on-surface);
+    line-height: 1.2;
+}
+
+.overview-stat-card .stat-label {
+    font-size: 0.75rem;
+    color: var(--on-surface-variant);
+}
+
+#overviewModalBody {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    margin: 0 -0.5rem;
+}
+
+.overview-summary-group,
+.overview-breakdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.overview-summary-group h4,
+.overview-breakdown-group h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--outline);
+    margin: 0 0.25rem 0.25rem;
+}
+
+.summary-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.25rem;
+}
+
+.summary-tag {
+    background-color: var(--surface-container);
+    color: var(--on-surface-variant);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--border-radius-xl);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--outline);
+}
+
+.summary-tag[data-filter-type] {
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    border: 1px solid currentcolor;
+}
+
+.summary-tag[data-filter-type]:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.summary-tag strong {
+    font-weight: 700;
+    color: var(--on-surface);
+    margin-left: 0.35rem;
+}
+
+.summary-tag[data-filter-type="set"] {
+    color: var(--curtain-color);
+}
+
+.summary-tag[data-filter-type="set"]:hover {
+    background-color: var(--curtain-container-color);
+}
+
+.summary-tag[data-filter-type="wallpaper"] {
+    color: var(--wallpaper-color);
+}
+
+.summary-tag[data-filter-type="wallpaper"]:hover {
+    background-color: var(--wallpaper-container-color);
+}
+
+.summary-tag[data-filter-type="wooden_blind"] {
+    color: var(--wooden-blind-color);
+}
+
+.summary-tag[data-filter-type="wooden_blind"]:hover {
+    background-color: var(--wooden-blind-container-color);
+}
+
+.summary-tag[data-filter-type="roller_blind"] {
+    color: var(--roller-blind-color);
+}
+
+.summary-tag[data-filter-type="roller_blind"]:hover {
+    background-color: var(--roller-blind-container-color);
+}
+
+.summary-tag[data-filter-type="vertical_blind"] {
+    color: var(--vertical-blind-color);
+}
+
+.summary-tag[data-filter-type="vertical_blind"]:hover {
+    background-color: var(--vertical-blind-container-color);
+}
+
+.summary-tag[data-filter-type="partition"] {
+    color: var(--partition-color);
+}
+
+.summary-tag[data-filter-type="partition"]:hover {
+    background-color: var(--partition-container-color);
+}
+
+.summary-tag[data-filter-type="pleated_screen"] {
+    color: var(--pleated-screen-color);
+}
+
+.summary-tag[data-filter-type="pleated_screen"]:hover {
+    background-color: var(--pleated-screen-container-color);
+}
+
+.summary-tag[data-filter-type="aluminum_blind"] {
+    color: var(--aluminum-blind-color);
+}
+
+.summary-tag[data-filter-type="aluminum_blind"]:hover {
+    background-color: var(--aluminum-blind-container-color);
+}
+
+.overview-room-card {
+    background-color: var(--surface);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--outline);
+    overflow: hidden;
+}
+
+.overview-room-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.overview-room-summary::-webkit-details-marker {
+    display: none;
+}
+
+.overview-room-summary .room-name {
+    font-weight: 700;
+    color: var(--on-surface);
+}
+
+.overview-room-summary .summary-tags {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.overview-room-summary .room-item-count {
+    font-size: 0.85rem;
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--border-radius-xl);
+    font-weight: 500;
+}
+
+.overview-room-summary .expand-icon {
+    transition: transform var(--transition-speed) ease;
+    color: var(--on-surface-variant);
+}
+
+.overview-room-card[open] > .overview-room-summary .expand-icon {
+    transform: rotate(180deg);
+}
+
+.overview-room-items {
+    padding: 0.75rem;
+    border-top: 1px solid var(--outline);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--surface-container);
+}
+
+.overview-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--on-surface-variant);
+    padding: 0.25rem 0;
+}
+
+.overview-item span:last-child {
+    font-weight: 700;
+    color: var(--on-surface);
+}
+
+/* Look Book Modal */
+.lookbook-modal-content {
+    max-width: 90%;
+    width: 700px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.lookbook-modal-body {
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: var(--surface-container);
+}
+
+.lookbook-summary {
+    background-color: var(--surface);
+    border: 1px solid var(--outline);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.lookbook-customer-info {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.lookbook-totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    font-size: 0.9rem;
+    text-align: right;
+    color: var(--on-surface-variant);
+}
+
+.lookbook-totals .grand-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 0.25rem;
+}
+
+.lookbook-room {
+    background-color: var(--surface);
+    border: 1px solid var(--outline);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.lookbook-room h4 {
+    background-color: var(--surface-container-high);
+    padding: 0.75rem 1.25rem;
+    margin: 0;
+    border-bottom: 1px solid var(--outline);
+    font-size: 1.1rem;
+}
+
+.lookbook-room h4 i {
+    color: var(--primary);
+}
+
+.lookbook-room-count {
+    font-weight: 400;
+    font-size: 0.85em;
+    color: var(--on-surface-variant);
+    margin-left: 0.25rem;
+}
+
+.lookbook-details {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem;
+    align-items: flex-start;
+}
+
+.visual-placeholder {
+    width: 140px;
+    height: 140px;
+    background-color: var(--surface-container);
+    border: 1px solid var(--outline);
+    border-radius: var(--border-radius-md);
+    flex-shrink: 0;
+}
+
+.visual-placeholder.is-clickable {
+    cursor: pointer;
+    transition:
+        box-shadow var(--transition-speed),
+        border-color var(--transition-speed);
+    position: relative;
+}
+
+.visual-placeholder.is-clickable:hover {
+    box-shadow: 0 0 0 3px var(--primary-container);
+    border-color: var(--primary);
+}
+
+.visual-placeholder.is-clickable::after {
+    content: "\ef0d";
+    font-family: Phosphor-Bold, sans-serif;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 1.2rem;
+    color: var(--on-primary-container);
+    background-color: var(--primary-container);
+    border-radius: var(--border-radius-sm);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-speed);
+}
+
+.visual-placeholder.is-clickable:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.visual-placeholder svg {
+    width: 100%;
+    height: 100%;
+}
+
+.spec-table-wrapper {
+    flex-grow: 1;
+}
+
+h5.lookbook-item-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.spec-table td {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--outline);
+    font-size: 0.95rem;
+}
+
+.spec-table tr:last-child td {
+    border-bottom: none;
+}
+
+.spec-table td:first-child {
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    width: 45px;
+}
+
+.spec-table td strong {
+    color: var(--on-surface);
+}
+
+.lookbook-hr {
+    border: 0;
+    border-top: 1px solid var(--outline);
+    margin: 0;
+}
+
+/* Header actions (export + close) */
+.lookbook-header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Hide all price info during JPG export */
+.lookbook-modal-body.is-exporting .lookbook-totals,
+.lookbook-modal-body.is-exporting .lookbook-price-row {
+    display: none !important;
+}
+
+/* Off-screen render stage for A4 JPG export — force light theme so the
+   resulting image is print-friendly regardless of the user's active theme. */
+.lookbook-export-stage {
+    --surface: #f8f9fc;
+    --surface-container: #fff;
+    --surface-container-high: #eaeff9;
+    --surface-container-low: #f6f6ff;
+    --surface-container-medium: #f0f0fa;
+    --on-surface: #191a1d;
+    --on-surface-variant: #43444d;
+    --outline: #dde2e7;
+    --outline-variant: #c5c6d0;
+    --primary: #6750a4;
+
+    color: var(--on-surface);
+    background-color: #fff;
+}
+
+/* Larger imagery + typography for the printed A4 JPG (easier to read on paper). */
+.lookbook-export-stage .visual-placeholder {
+    width: 230px;
+    height: 230px;
+}
+
+.lookbook-export-stage .lookbook-room h4 {
+    font-size: 1.5rem;
+    padding: 1rem 1.25rem;
+}
+
+.lookbook-export-stage h5.lookbook-item-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+}
+
+.lookbook-export-stage .spec-table td {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+}
+
+.lookbook-export-stage .lookbook-summary {
+    font-size: 1.1rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.lookbook-export-stage .lookbook-customer-info {
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* Look Book — Desktop ≥ 1024px: cap modal at tablet width + 2-column items */
+@media (width >= 1024px) {
+    dialog.modal.lookbook-modal-content {
+        max-width: 1024px;
+        width: 95vw;
+        max-height: 95vh;
+    }
+
+    .lookbook-modal-body .lookbook-items-grid {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.375rem;
+    }
+
+    .lookbook-modal-body .lookbook-items-grid > .lookbook-details {
+        flex: 0 0 calc(50% - 0.75rem);
+        width: calc(50% - 0.75rem);
+        box-sizing: border-box;
+        margin: 0.375rem;
+        padding: 0.75rem;
+        border: 1px solid var(--outline-variant);
+        border-radius: var(--border-radius-md);
+        background-color: var(--surface-container-low);
+    }
+
+    .lookbook-modal-body .lookbook-items-grid > .lookbook-hr {
+        display: none;
+    }
+}
+
+
+/* Favorites Selector Modal */
+#favoritesModal .modal-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    max-height: 80vh;
+}
+
+.fav-selector-header {
+    padding: 1rem 1.5rem 0.75rem;
+    border-bottom: 1px solid var(--outline);
+    flex-shrink: 0;
+}
+
+.fav-selector-header h3 {
+    margin-bottom: 0.75rem;
+}
+
+.fav-selector-search-wrapper {
+    position: relative;
+}
+
+.fav-selector-search-wrapper .ph {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--on-surface-variant);
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+.fav-selector-search {
+    width: 100%;
+    padding: 0.65rem 0.75rem 0.65rem 40px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--outline);
+    background-color: var(--surface-container);
+    color: var(--on-surface);
+    font-size: 1rem;
+}
+
+.fav-selector-search:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-container);
+    background-color: var(--surface);
+}
+
+.fav-selector-body {
+    overflow-y: auto;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex-grow: 1;
+}
+
+.fav-selector-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid transparent;
+    background: none;
+    font-family: var(--font-family);
+    cursor: pointer;
+    text-align: left;
+    transition:
+        background-color var(--transition-speed),
+        border-color var(--transition-speed);
+}
+
+.fav-selector-item:hover {
+    background-color: var(--surface-container);
+    border-color: var(--outline-variant);
+}
+
+.fav-selector-item:focus,
+.fav-selector-item:active {
+    outline: none;
+    border-color: var(--primary);
+    background-color: var(--primary-container);
+}
+
+.fav-selector-code {
+    font-weight: 500;
+    color: var(--on-surface);
+    font-size: 1rem;
+}
+
+.fav-selector-item:focus .fav-selector-code,
+.fav-selector-item:active .fav-selector-code {
+    color: var(--on-primary-container);
+    font-weight: 700;
+}
+
+.fav-selector-price {
+    font-size: 0.9rem;
+    color: var(--on-surface-variant);
+}
+
+.fav-selector-item:hover .fav-selector-price,
+.fav-selector-item:focus .fav-selector-price,
+.fav-selector-item:active .fav-selector-price {
+    color: var(--on-primary-container);
+}
+
+.fav-selector-body .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--on-surface-variant);
+}
+
+.fav-selector-item.is-hidden {
+    display: none;
+}
+
+.fav-selector-footer {
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid var(--outline);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.fav-selector-footer .btn {
+    font-size: 0.9rem;
+}
+
+/* Favorite Manager Modals */
+.fav-manager-header h3 {
+    margin-bottom: 0;
+}
+
+.fav-manager-body {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.fav-manager-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-speed);
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.fav-manager-item:not(:last-child) {
+    border-bottom: 1px solid var(--outline);
+}
+
+.fav-manager-item:hover {
+    background-color: var(--surface-container);
+}
+
+.fav-manager-item.is-selected {
+    background-color: var(--primary-container);
+    border-left-color: var(--primary);
+}
+
+.fav-manager-code {
+    font-weight: 700;
+    color: var(--on-surface);
+    word-break: break-all;
+}
+
+.fav-manager-item.is-selected .fav-manager-code {
+    color: var(--on-primary-container);
+}
+
+.fav-manager-price {
+    font-size: 0.9rem;
+    color: var(--on-primary-container);
+    background-color: var(--primary-container);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-xl);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.fav-manager-body .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: var(--on-surface-variant);
+}
+
+#favManagerFooter {
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid var(--outline);
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+#favManagerFooter .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-md);
+}
+
+#favManagerFooter .btn[data-act="add-new-fav-form"] {
+    margin-right: auto;
+}
+
+#favAddBody,
+#favEditBody {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Item Type Modal */
+.radio-card-group--2-col,
+#manageFavsTypeBody {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* [NEW] Layout helpers for form grids */
+.grid-item-v-center {
+    align-self: center;
+}
+
+.btn-full-width {
+    width: 100%;
+    height: auto;
+    padding: 0.65rem 1rem;
+}
+
+#manageFavsTypeBody .radio-card-content {
+    padding: 0.75rem;
+}
+
+#manageFavsTypeBody .radio-card-content strong {
+    font-size: 0.95rem;
+}
+
+#manageFavsTypeBody .radio-card-content small {
+    font-size: 0.8rem;
+}
+
+.receipt-summary-card {
+    background: var(--md-sys-color-surface-container, #f3f3f3);
+    color: var(--md-sys-color-on-surface, #1a1a1a);
+    border: 1px solid var(--md-sys-color-outline-variant, #d0d0d0);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.receipt-summary-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: inherit;
+}
+
+.receipt-summary-row strong {
+    min-width: 8rem;
+    color: var(--md-sys-color-on-surface-variant, #555);
+}
+
+.receipt-summary-row span {
+    color: var(--md-sys-color-on-surface, #1a1a1a);
+    font-weight: 500;
+}
+
+.receipt-summary-row .text-warning {
+    color: var(--md-sys-color-error, #c0392b);
+    font-style: italic;
+}
+
+.signature-pad-container {
+    width: 100%;
+    height: 200px;
+    border: 1px dashed var(--md-sys-color-outline, #888);
+    border-radius: 8px;
+    background: #fff;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.signature-pad-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.signature-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.signature-controls .btn {
+    flex: 1 1 calc(50% - 0.25rem);
+    min-width: 160px;
+    justify-content: center;
+}
+
+.signature-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.4rem;
+    border-radius: 50%;
+    font-weight: 700;
+    color: transparent;
+}
+
+.signature-status.has-signature {
+    background: var(--md-sys-color-primary, #2e7d32);
+    color: #fff;
+}

@@ -1,0 +1,484 @@
+/* Animations */
+@keyframes highlight-and-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+        background-color: transparent;
+    }
+
+    50% {
+        opacity: 1;
+        background-color: var(--primary-container);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: transparent;
+    }
+}
+
+.item-created {
+    animation: highlight-and-fade-in 1.2s ease-out forwards;
+}
+
+@keyframes fade-out-and-shrink {
+    from {
+        opacity: 1;
+        transform: scale(1);
+        max-height: 500px;
+        margin-bottom: 1.5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+        max-height: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+    }
+}
+
+.item-removing {
+    overflow: hidden;
+    animation: fade-out-and-shrink 0.4s ease-in forwards;
+}
+
+.item-removing.card {
+    margin-bottom: 1.5rem;
+}
+
+.item-removing.item-card {
+    margin-bottom: 1rem;
+}
+
+.item-removing.wall-input-row {
+    margin-bottom: 0.5rem;
+}
+
+@keyframes yellow-fade {
+    0% {
+        background-color: var(--warning-container);
+    }
+
+    100% {
+        background-color: var(--surface-container);
+    }
+}
+
+.input-highlight {
+    animation: yellow-fade 1.2s ease-out;
+}
+
+.scrolling-jump {
+    outline: 3px solid var(--primary);
+    box-shadow: 0 6px 25px var(--glow-color);
+    transition:
+        box-shadow 0.5s ease,
+        outline 0.5s ease;
+    border-radius: var(--border-radius-lg);
+}
+
+/* Filter Bar */
+.filter-status-bar {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    background-color: var(--info-container);
+    color: var(--on-info-container);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1.5rem;
+    position: sticky;
+    top: 80px;
+    z-index: 90;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--info);
+    transition:
+        background-color 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.filter-status-bar.is-visible {
+    display: flex;
+}
+
+.filter-status-bar span strong {
+    font-weight: 700;
+    margin-left: 0.25rem;
+}
+
+.filter-status-bar .btn-chip {
+    background-color: var(--surface);
+    color: var(--on-surface-variant);
+    padding: 0.4rem 0.8rem;
+    border-color: var(--outline-variant);
+}
+
+.filter-status-bar .btn-chip:hover {
+    background-color: var(--surface-container-high);
+}
+
+.filter-status-bar[data-filter-type] .btn-chip {
+    background-color: var(--surface);
+    color: inherit;
+    border-color: currentcolor;
+    opacity: 0.8;
+}
+
+.filter-status-bar[data-filter-type] .btn-chip:hover {
+    opacity: 1;
+    background-color: var(--surface-container);
+}
+
+.filter-status-bar[data-filter-type="set"] {
+    background-color: var(--curtain-container-color);
+    color: var(--curtain-color);
+    border-color: var(--curtain-color);
+}
+
+.filter-status-bar[data-filter-type="wallpaper"] {
+    background-color: var(--wallpaper-container-color);
+    color: var(--wallpaper-color);
+    border-color: var(--wallpaper-color);
+}
+
+.filter-status-bar[data-filter-type="wooden_blind"] {
+    background-color: var(--wooden-blind-container-color);
+    color: var(--wooden-blind-color);
+    border-color: var(--wooden-blind-color);
+}
+
+.filter-status-bar[data-filter-type="roller_blind"] {
+    background-color: var(--roller-blind-container-color);
+    color: var(--roller-blind-color);
+    border-color: var(--roller-blind-color);
+}
+
+.filter-status-bar[data-filter-type="vertical_blind"] {
+    background-color: var(--vertical-blind-container-color);
+    color: var(--vertical-blind-color);
+    border-color: var(--vertical-blind-color);
+}
+
+.filter-status-bar[data-filter-type="partition"] {
+    background-color: var(--partition-container-color);
+    color: var(--partition-color);
+    border-color: var(--partition-color);
+}
+
+.filter-status-bar[data-filter-type="pleated_screen"] {
+    background-color: var(--pleated-screen-container-color);
+    color: var(--pleated-screen-color);
+    border-color: var(--pleated-screen-color);
+}
+
+.filter-status-bar[data-filter-type="aluminum_blind"] {
+    background-color: var(--aluminum-blind-container-color);
+    color: var(--aluminum-blind-color);
+    border-color: var(--aluminum-blind-color);
+}
+
+.filter-status-bar[data-filter-type="suspended"] {
+    background-color: var(--warning-container);
+    color: var(--on-warning-container);
+    border-color: var(--warning);
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 60%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    color: var(--on-primary);
+    backdrop-filter: blur(4px);
+}
+
+#loading-overlay p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 5px solid var(--on-primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Toast Notifications */
+#toast-container {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(-150%);
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+    background-color: var(--info-container);
+    color: var(--on-info-container);
+    border: 1px solid var(--outline);
+    backdrop-filter: blur(10px);
+}
+
+.toast i {
+    font-size: 1.5em;
+    color: var(--info);
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background-color: var(--success-container);
+    color: var(--on-success-container);
+}
+
+.toast-success i {
+    color: var(--success);
+}
+
+.toast-warning {
+    background-color: var(--warning-container);
+    color: var(--on-warning-container);
+}
+
+.toast-warning i {
+    color: var(--warning);
+}
+
+.toast-error {
+    background-color: var(--danger-container);
+    color: var(--on-danger-container);
+}
+
+.toast-error i {
+    color: var(--danger);
+}
+
+/* Visibility Helpers */
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.item-hidden {
+    display: none;
+}
+
+/* --- SVG STYLES (Look Book / Visualizations) --- */
+.opening-text {
+    text-anchor: middle;
+    font-size: 10px;
+    font-weight: bold;
+    fill: var(--on-surface);
+    dominant-baseline: central;
+}
+
+.opening-text-bg {
+    fill: var(--surface-container);
+    stroke: var(--outline);
+    opacity: 0.85;
+}
+
+.blind-frame {
+    fill: var(--surface);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.blind-slat {
+    fill: var(--surface-container-high);
+    stroke: var(--outline);
+    stroke-width: 0.25;
+}
+
+.wooden-blind-slat {
+    fill: var(--wooden-blind-container-color);
+    stroke: var(--wooden-blind-color);
+    stroke-width: 0.3;
+}
+
+.wooden-blind-strip {
+    fill: var(--on-surface-variant);
+    opacity: 0.6;
+}
+
+.roller-fabric {
+    fill: var(--roller-blind-container-color);
+    stroke: var(--roller-blind-color);
+    stroke-width: 0.5;
+}
+
+.roller-roll {
+    fill: var(--surface-container-high);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.roller-bar {
+    stroke: var(--on-surface-variant);
+    stroke-width: 1.5;
+}
+
+.partition-panel {
+    fill: var(--partition-container-color);
+    stroke: var(--partition-color);
+    stroke-width: 0.4;
+}
+
+.partition-hinge {
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+}
+
+.pleated-screen-mesh {
+    stroke: var(--pleated-screen-color);
+    stroke-width: 0.5;
+    opacity: 0.6;
+}
+
+.wallpaper-pattern {
+    fill: var(--wallpaper-color);
+    opacity: 0.5;
+}
+
+.adjustment-cord {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+    fill: var(--on-surface-variant);
+    opacity: 0.8;
+}
+
+.louis-swag,
+.louis-tail {
+    fill: var(--curtain-container-color);
+    stroke: var(--curtain-color);
+    stroke-width: 0.8;
+    opacity: 0.9;
+}
+
+.louis-tassel {
+    fill: var(--warning);
+    stroke: var(--on-warning-container);
+    stroke-width: 0.5;
+}
+
+.curtain-panel-opaque {
+    fill: var(--surface-container-high);
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.5;
+}
+
+.curtain-panel-sheer {
+    fill: var(--surface);
+    stroke: var(--outline-variant);
+    stroke-width: 0.5;
+    opacity: 0.7;
+}
+
+.style-grommet {
+    fill: var(--outline-variant);
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+}
+
+.style-ripplefold-path {
+    fill: none;
+    stroke: var(--on-surface-variant);
+    stroke-width: 1.5;
+}
+
+.style-pleat-text {
+    font-size: 4px;
+    fill: var(--on-surface-variant);
+    font-family: monospace, sans-serif;
+}
+
+.style-pleat-line {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.6;
+    opacity: 0.8;
+}
+
+.style-pleat-stitch {
+    fill: var(--on-surface-variant);
+    stroke: none;
+}
+
+.dimension-line,
+.dimension-tick {
+    stroke: var(--on-surface-variant);
+    stroke-width: 0.75;
+}
+
+.dimension-line {
+    stroke-dasharray: 2 2;
+}
+
+.dimension-text {
+    font-size: 8px;
+    fill: var(--on-surface);
+    text-anchor: middle;
+}
+
+.fallback-text {
+    font-size: 12px;
+    font-weight: 500;
+    fill: var(--on-surface-variant);
+    text-anchor: middle;
+    dominant-baseline: middle;
+}

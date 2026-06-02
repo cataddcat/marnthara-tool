@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx prettier:*)",
+      "Bash(wc -l \"/d/_Projects/AOE_Vite_ST x BAS\"/src/lib/*.js)",
+      "Bash(grep:*)",
+      "Bash(wc:*)",
+      "Bash(npm install:*)",
+      "Bash(sed 's/class=\"//')",
+      "Bash(sed 's/\"$//')",
+      "Read(//tmp/**)",
+      "Bash(sed 's/id=\"//')",
+      "Bash(npx stylelint:*)",
+      "Bash(cat .stylelintrc.json)",
+      "Bash(cat .stylelintrc.js)",
+      "Bash(cat .stylelintrc.yaml)",
+      "Bash(cat stylelint.config.js)",
+      "Bash(cat stylelint.config.mjs)",
+      "Bash(sed -n '110,120p' \"src/styles/components.css\")",
+      "Bash(sed -n '600,615p' \"src/styles/components.css\")",
+      "Bash(npx vitest *)",
+      "Bash(npx vite *)",
+      "Bash(cat vite.config.js)",
+      "Bash(cat vite.config.ts)",
+      "Bash(npx pwa-assets-generator *)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(python3 -c ' *)",
+      "Bash(git stash *)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

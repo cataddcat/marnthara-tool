@@ -1,0 +1,52 @@
+# ------------------------------------
+# 1. Node.js / Dependencies
+# ------------------------------------
+# ห้ามติดตามโฟลเดอร์ที่เก็บแพ็คเกจภายนอก
+/node_modules
+
+# ไฟล์ล็อก/ดีบักของ npm และ Yarn
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ------------------------------------
+# 2. Artifacts จากการสร้าง (Build)
+# ------------------------------------
+# โฟลเดอร์ที่เก็บผลลัพธ์ของการ build (เช่น dist, build)
+/dist
+/build
+/out
+/tmp
+/coverage
+*.log
+*.map
+
+# ------------------------------------
+# 3. ไฟล์เฉพาะระบบปฏิบัติการ/เครื่องมือ (OS/Editor)
+# ------------------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDEs และ Editors
+.idea/          # JetBrains IDEs (e.g., WebStorm)
+.vscode/        # VS Code settings
+*.swp           # Swap files (Vim)
+*.bak           # Backup files
+*~
+
+# ------------------------------------
+# 4. ไฟล์การตั้งค่าเฉพาะที่ (Local Config)
+# ------------------------------------
+# ไฟล์ Environment Variables (อาจมีข้อมูลอ่อนไหว)
+.env
+.env.*
+
+# ------------------------------------
+# 5. AI helper artifacts (local only)
+# ------------------------------------
+# ไฟล์ dump โค้ดรวม / โฟลเดอร์ zip สำหรับส่งให้ AI (ไม่ต้องขึ้น repo)
+/AI_ZIPS
+combined_code.txt
