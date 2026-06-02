@@ -104,6 +104,16 @@
     transform: translateY(0);
 }
 
+/* While a room's options menu is open, lift the whole card above sibling
+   room cards (z-index:1 via .room-header-controls) and the fixed summary
+   footer (z-index:50) / sticky header (z-index:100). Without this the menu
+   is trapped inside the card's stacking context and gets covered by the
+   room below — or, for the last room, by the footer — making "ลบห้องนี้"
+   unclickable. .card already sets position:relative, so z-index applies. */
+.room-card:has(.room-options-menu.show) {
+    z-index: 200;
+}
+
 .room-options-menu a:hover {
     background-color: var(--surface-container);
 }
